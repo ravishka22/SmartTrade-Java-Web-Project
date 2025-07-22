@@ -24,5 +24,16 @@ async function signUp() {
                 }
             }
     );
+    
+    if (response.ok) { //success
+        const json = await response.json();
+        if (json.status) {
+            window.location = "verify-account.html"
+        } else {
+            document.getElementById("message").innerHTML = json.message;
+        }
+    }else{
+        document.getElementById("message").innerHTML="Registration failed. Please try again";
+    }
 
 }
